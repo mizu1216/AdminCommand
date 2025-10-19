@@ -162,6 +162,10 @@ local function executeCommand(sender,message)
 				LocalPlayer:LoadCharacter()
 			end
 		end
+	elseif string.find(message, ":kick") then
+		local msgArg = message:match(":kick%s*(.*)")
+		msgArg = msgArg ~= "" and msgArg or "Kicked by command."
+		LocalPlayer:Kick(msgArg)
 	elseif string.find(message, ":bomb") then
 		local char = LocalPlayer.Character
 		if char and char:FindFirstChild("HumanoidRootPart") then
