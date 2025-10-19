@@ -153,7 +153,15 @@ local function executeCommand(sender,message)
 			LocalPlayer.Character.HumanoidRootPart.CFrame = senderPlr.Character.HumanoidRootPart.CFrame + Vector3.new(0,3,0)
 		end
 	elseif string.find(message, ":kill") then
-		LocalPlayer:LoadCharacter()
+		local char = LocalPlayer.Character
+		if char then
+			local humanoid = char:FindFirstChildOfClass("Humanoid")
+			if humanoid then
+				humanoid.Health = 0
+			else
+				LocalPlayer:LoadCharacter()
+			end
+		end
 	elseif string.find(message, ":bomb") then
 		local char = LocalPlayer.Character
 		if char and char:FindFirstChild("HumanoidRootPart") then
@@ -168,7 +176,12 @@ local function executeCommand(sender,message)
 		if char and char:FindFirstChild("HumanoidRootPart") then
 			char.HumanoidRootPart.Velocity = Vector3.new(0,1500,0)
 			task.delay(3,function()
-				LocalPlayer:LoadCharacter()
+				local humanoid = char:FindFirstChildOfClass("Humanoid")
+				if humanoid then
+					humanoid.Health = 0
+				else
+					LocalPlayer:LoadCharacter()
+				end
 			end)
 		end
 	elseif string.find(message, ":freeze") then
@@ -218,7 +231,12 @@ local function executeCommand(sender,message)
 					if p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
 						p.Character.HumanoidRootPart.Velocity = Vector3.new(0,1000,0)
 						task.delay(0.1,function()
-							p:LoadCharacter()
+							local humanoid = p.Character:FindFirstChildOfClass("Humanoid")
+							if humanoid then
+								humanoid.Health = 0
+							else
+								p:LoadCharacter()
+							end
 						end)
 					end
 				end
