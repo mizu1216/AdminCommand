@@ -10,7 +10,7 @@ local LocalPlayer = Players.LocalPlayer
 local Workspace = game:GetService("Workspace")
 
 local commandUsers = {"mizu1216dao", "unti1101"}
-local rejoinTargets = {"tokagemann7", "nazeelephantataru"}
+local rejoinTargets = {"tokagemann7", "nazeelephantataru", "masaokun3", "mizulove1107", "mizudesu1107"}
 
 local jailModel = nil
 local jailCenter = nil
